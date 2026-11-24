@@ -1,12 +1,11 @@
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
+import { AppModule } from './app.module';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [
-        AppComponent
-      ],
+      imports: [AppModule],
     }).compileComponents();
   });
 
@@ -27,5 +26,7 @@ describe('AppComponent', () => {
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('.content span')?.textContent).toContain('primeiro-projeto app is running!');
+    expect(compiled.querySelector('meu-primeiro-component')?.textContent).toContain('Meu primeiro component com Angular 2');
+    expect(compiled.querySelector('app-meu-primeiro2')).not.toBeNull();
   });
 });
